@@ -1,4 +1,4 @@
-package com.jarocki.stanislaw.chess.Coordinates;
+package com.jarocki.stanislaw.chess.Coordinate;
 
 public enum Row {
     ONE,
@@ -10,7 +10,7 @@ public enum Row {
     SEVEN,
     EIGHT;
 
-    public static Row getRowByNumber(String number) {
+    public static Row getRowByNum(String number) {
         switch (number) {
             case "1":
                 return Row.ONE;
@@ -33,7 +33,7 @@ public enum Row {
         }
     }
 
-    public int getNumber() {
-        return this.ordinal() + 1;
+    public int getNum() {
+        return this.ordinal();
     }
 }

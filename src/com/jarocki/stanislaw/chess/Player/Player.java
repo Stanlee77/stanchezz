@@ -1,12 +1,11 @@
 package com.jarocki.stanislaw.chess.Player;
 
-import com.jarocki.stanislaw.chess.Coordinates.Column;
-import com.jarocki.stanislaw.chess.Coordinates.Row;
-
-import java.util.List;
+import com.jarocki.stanislaw.chess.Coordinate.Column;
+import com.jarocki.stanislaw.chess.Coordinate.Row;
+import com.jarocki.stanislaw.chess.Piece.Color;
 
 public class Player {
-    private final Role role;
+    private Role role;
     private String lastMoveFrom;
     private String lastMoveTo;
     private Column lastMoveFromCol;
@@ -18,9 +17,13 @@ public class Player {
         this.role = role;
     }
 
+    public void switchRole (){
+        this.role = getRole().equals(Role.WHITE) ? Role.BLACK : Role.WHITE;
+    }
+
     public void setLastMove(String moveFrom, String moveTo) {
         if(moveFrom == null || moveTo == null) {
-            System.out.println("Missing moves: " + moveFrom + " " + moveTo + " (setLastMove)");
+            System.out.println("Some moves are missing: moveFrom = " + moveFrom + " and moveTo = " + moveTo + " (setLastMove)");
         }
         setLastMoveFrom(moveFrom);
         setLastMoveTo(moveTo);
@@ -35,9 +38,9 @@ public class Player {
         }
 
         Column moveFromCol = Column.valueOf(moveFrom.substring(0, 1));
-        Row moveFromRow = Row.getRowByNumber(moveFrom.substring(1,2));
+        Row moveFromRow = Row.getRowByNum(moveFrom.substring(1,2));
         Column moveToCol = Column.valueOf(moveTo.substring(0, 1));
-        Row moveToRow = Row.getRowByNumber(moveTo.substring(1,2));
+        Row moveToRow = Row.getRowByNum(moveTo.substring(1,2));
 
         setLastMoveFromCol(moveFromCol);
         setLastMoveFromRow(moveFromRow);
@@ -53,9 +56,9 @@ public class Player {
 
         return (
             colFrom.toString() +
-            String.valueOf(rowFrom.getNumber()) +
+            String.valueOf(rowFrom.getNum()) +
             colTo.toString() +
-            String.valueOf(rowTo.getNumber())
+            String.valueOf(rowTo.getNum())
         );
     }
 

@@ -5,29 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="594d24b9-cb67-479c-bd03-0c89ab1bafab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessEngine.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Column.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Row.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Basic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Pawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Rook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Slider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Column.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Coordinate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Basic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/King.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Column.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Row.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Basic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Color.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Pawn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Rook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Slider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Role.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="com.jarocki.stanislaw.chess.Main">
+          <activation />
+        </task>
+        <task path="">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -43,6 +62,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2QYS6gFlqUJ1sff56xJOBTXQndq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -54,9 +76,25 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/stanlee77/code/chessEngine/src/com/jarocki/stanislaw/chess/Piece&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Color Scheme Font&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Run Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.jarocki.stanislaw.chess.Main" />
+      <module name="chessEngine" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -71,18 +109,35 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java</url>
-          <line>9</line>
-          <properties field="fields" class="com.jarocki.stanislaw.chess.Board.Board" />
-          <option name="timeStamp" value="1" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Row.java</url>
+          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
           <line>23</line>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.jarocki.stanislaw.chess.Board.Board" memberName="fields" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/chessEngine$Run_Main.ic" NAME="Run Main Coverage Results" MODIFIED="1687198501398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

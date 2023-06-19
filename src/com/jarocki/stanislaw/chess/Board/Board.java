@@ -1,44 +1,51 @@
 package com.jarocki.stanislaw.chess.Board;
 
-import com.jarocki.stanislaw.chess.Coordinates.Column;
-import com.jarocki.stanislaw.chess.Coordinates.Row;
-import com.jarocki.stanislaw.chess.Pieces.Basic;
-import com.jarocki.stanislaw.chess.Pieces.Color;
-import com.jarocki.stanislaw.chess.Pieces.Pawn;
+import com.jarocki.stanislaw.chess.Coordinate.Column;
+import com.jarocki.stanislaw.chess.Coordinate.Row;
+import com.jarocki.stanislaw.chess.Piece.*;
+
+import javax.xml.stream.events.StartDocument;
 
 public class Board {
-    private Basic[][] fields;
+    private final Basic[][] fields;
+    private boolean hasWhiteKingMoved;
+    private boolean hasBlackKingMoved;
 
     public Board() {
         fields = new Basic[8][8];
+        this.hasWhiteKingMoved = false;
+        this.hasBlackKingMoved = false;
+        this.setUpPieces();
     }
 
     public void setUpPieces() {
         for (int col = 0; col < 8; col++) {
-            Basic basicWhitePiece = new Basic(Color.WHITE, Column.values()[col], Row.TWO);
-            Basic basicBlackPiece = new Basic(Color.BLACK, Column.values()[col], Row.TWO);
-            fields[Row.TWO.ordinal()][Column.values()[col].ordinal()] = new Pawn(basicWhitePiece);
-            fields[Row.SEVEN.ordinal()][Column.values()[col].ordinal()] = new Pawn(basicBlackPiece);
+            fields[Row.TWO.getNum()][col] = new Pawn(new Basic(Color.WHITE, Row.TWO, Column.values()[col]));
+            fields[Row.SEVEN.getNum()][col] = new Pawn(new Basic(Color.BLACK, Row.SEVEN, Column.values()[col]));
         }
 
-//        fields[Column.A.ordinal()][Row.ONE.ordinal()] = new Rook(new Basic(Color.WHITE, Column.A, Row.ONE));
-//        fields[Column.H.ordinal()][Row.ONE.ordinal()] = new Rook(new Basic(Color.WHITE, Column.H, Row.ONE));
-//        fields[Column.A.ordinal()][Row.EIGHT.ordinal()] = new Rook(new Basic(Color.BLACK, Column.A, Row.EIGHT));
-//        fields[Column.H.ordinal()][Row.EIGHT.ordinal()] = new Rook(new Basic(Color.BLACK, Column.H, Row.EIGHT));
-//
-//        fields[Column.C.ordinal()][Row.ONE.ordinal()] = new Bishop(new Basic(Color.WHITE, Column.C, Row.ONE));
-//        fields[Column.F.ordinal()][Row.ONE.ordinal()] = new Bishop(new Basic(Color.WHITE, Column.F, Row.ONE));
-//        fields[Column.C.ordinal()][Row.EIGHT.ordinal()] = new Bishop(new Basic(Color.BLACK, Column.C, Row.EIGHT));
-//        fields[Column.F.ordinal()][Row.EIGHT.ordinal()] = new Bishop(new Basic(Color.BLACK, Column.F, Row.EIGHT));
+        fields[Row.ONE.getNum()][Column.A.getNum()] = new Rook(Color.WHITE, Row.ONE, Column.A);
+        fields[Row.ONE.getNum()][Column.H.getNum()] = new Rook(Color.WHITE, Row.ONE, Column.H);
+        fields[Row.EIGHT.getNum()][Column.A.getNum()] = new Rook(Color.BLACK, Row.EIGHT, Column.A);
+        fields[Row.EIGHT.getNum()][Column.H.getNum()] = new Rook(Color.BLACK, Row.EIGHT, Column.H);
+
+        fields[Row.ONE.getNum()][Column.E.getNum()] = new King(Color.WHITE, Row.ONE, Column.E);
+        fields[Row.EIGHT.getNum()][Column.E.getNum()] = new King(Color.BLACK, Row.EIGHT, Column.E);
+
+        fields[Row.ONE.getNum()][Column.D.getNum()] = new Queen(Color.WHITE, Row.ONE, Column.D);
+        fields[Row.EIGHT.getNum()][Column.D.getNum()] = new Queen(Color.BLACK, Row.EIGHT, Column.D);
+
+        fields[Row.ONE.getNum()][Column.B.getNum()] = new Knight(Color.WHITE, Row.ONE, Column.B);
+        fields[Row.ONE.getNum()][Column.G.getNum()] = new Knight(Color.WHITE, Row.ONE, Column.G);
+        fields[Row.EIGHT.getNum()][Column.B.getNum()] = new Knight(Color.BLACK, Row.EIGHT, Column.B);
+        fields[Row.EIGHT.getNum()][Column.G.getNum()] = new Knight(Color.BLACK, Row.EIGHT, Column.G);
+
+        fields[Row.ONE.getNum()][Column.C.ordinal()] = new Bishop(Color.WHITE, Row.ONE, Column.C);
+        fields[Row.ONE.getNum()][Column.F.ordinal()] = new Bishop(Color.WHITE, Row.ONE, Column.F);
+        fields[Row.EIGHT.getNum()][Column.C.ordinal()] = new Bishop(Color.BLACK, Row.EIGHT, Column.C);
+        fields[Row.EIGHT.getNum()][Column.F.ordinal()] = new Bishop(Color.BLACK, Row.EIGHT, Column.F);
     }
 
-    public Basic getPiece(int row, int column) {
-        if (row >= 0 && row < 8 && column >= 0 && column < 8) {
-            return fields[row][column];
-        } else {
-            return null;
-        }
-    }
     public void movePiece(Column currentColumn, Row currentRow, Column targetColumn, Row targetRow) {
         int currRow = currentRow.ordinal();
         int currCol = currentColumn.ordinal();
@@ -58,13 +65,13 @@ public class Board {
         }
         System.out.println();
 
-        for (int row = 7; row >= 0; row--) {  // Iterate rows in reversed order
+        for (int row = 7; row >= 0; row--) {
             System.out.print(Row.values()[row].ordinal() + 1 + " ");
 
             for (int col = 0; col < 8; col++) {
                 Basic piece = fields[row][col];
-                boolean isLightPurple = (row + col) % 2 == 0;  // Determine if the tile should be light purple
-                boolean isLightBlue = (row + col) % 2 != 0;    // Determine if the tile should be light blue
+                boolean isLightPurple = (row + col) % 2 == 0;
+                boolean isLightBlue = (row + col) % 2 != 0;
 
                 if (isLightPurple) {
                     System.out.print("\u001B[48;5;53m");
@@ -74,9 +81,9 @@ public class Board {
 
                 if (piece != null) {
                     if (piece.getColor() == Color.WHITE) {
-                        System.out.print(" \u001B[93m" + piece.getSymbol() + " \u001B[0m");  // light yellow - white
+                        System.out.print(" \u001B[93m" + piece.getSymbol().getChar() + " \u001B[0m");  // light yellow - white
                     } else {
-                        System.out.print(" \u001B[94m" + piece.getSymbol() + " \u001B[0m");  // black - light blue
+                        System.out.print(" \u001B[94m" + piece.getSymbol().getChar() + " \u001B[0m");  // black - light blue
                     }
                 } else {
                     System.out.print("   ");
@@ -86,4 +93,79 @@ public class Board {
         }
     }
 
+    public void makeMove(int fromRow, int fromCol, int toRow, int toCol) {
+        Basic piece = fields[fromRow][fromCol];
+        fields[fromRow][fromCol] = null;
+        fields[toRow][toCol] = piece;
+
+        Row targetRow = Row.getRowByNum(String.valueOf(toRow));
+        Column targetCol = Column.getColByNum(String.valueOf(toCol));
+        piece.setRow(targetRow);
+        piece.setColumn(targetCol);
+
+        // Handle special moves
+        if (piece instanceof King) {
+            if (piece.getColor() == Color.WHITE) {
+                this.hasWhiteKingMoved = true;
+            } else {
+                this.hasBlackKingMoved = true;
+            }
+        }
+    }
+
+    public boolean isMoveValid(int fromRow, int fromCol, int toRow, int toCol, Color currPlayerColor) {
+        // check if not trying to go from or to outside the board
+        if (fromRow < 0 || fromRow >= 8 || fromCol < 0 || fromCol >= 8 ||
+                toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
+            System.out.println("Coordinates out of the board! (Board)");
+            return false;
+        }
+
+        Basic piece = fields[fromRow][fromCol];
+
+        // check if there's a piece to pick and move
+        if (piece == null) {
+            System.out.println("There's no piece in this field. (Board)");
+            return false;
+        }
+
+        // make sure the piece belongs to the current player
+        if (piece.getColor() != currPlayerColor) {
+            System.out.println("Oh come on, It's not even your piece! (Board)");
+            return false;
+        }
+
+        // check if target field is not occupied by piece of the same color
+        if (fields[toRow][toCol] != null && fields[toRow][toCol].getColor() == currPlayerColor) {
+            System.out.println("There is your piece already! (Board)");
+            return false;
+        }
+
+        // check stuff specific for particular piece
+        if (!piece.isMoveValid(toRow, toCol, this)) {
+            System.out.println("Move invalid for a particular piece. (Board)");
+            return false;
+        }
+
+        // Ensure the move does not result in the current player's king being in check
+//        Board tempBoard = getCopy();
+//        tempBoard.makeMove(fromRow, fromCol, toRow, toCol);
+//        if (tempBoard.isKingInCheck(currentPlayerColor)) {
+//            return false;
+//        }
+
+        return true;
+    }
+
+    public Basic getPiece(int row, int column) {
+        if (row >= 0 && row < 8 && column >= 0 && column < 8) {
+            return fields[row][column];
+        } else {
+            return null;
+        }
+    }
+
+    public void setPiece(int row, int col, Basic piece) {
+        fields[row][col] = piece;
+    }
 }
