@@ -30,10 +30,11 @@ public class Test {
                 "h4 g5", "b7 b5",
                 "h1 h7", "f7 f5",
                 "h7 d7", "a8 a5", // wrong move over opponents and self pieces
-                "h7 e7", "a7 a5",
-                "e7 e5", "h8 h7",
-                "e5 b5", "h7 h1",
+                "h7 f7", "a7 a5",
+                "f7 f5", "h8 h7",
+                "f5 b5", "h7 h1",
                 "b5 f5", "h1 g1",
+                "f5 a5", "a8 a6",
         };
     }
 
@@ -69,6 +70,23 @@ public class Test {
         };
     }
 
+    static public String[] takeKingOut() {
+        return new String[]{
+                "e2 e4", "b7 b6", // move pawns out
+                "e1 e2", "f7 f5", // move one king out and pawn to it
+                "e2 f3", "h7 h6", // move one king out and queen out
+                "f3 f4", "b8 c6", // come with king closer to pawn and move knight for castling
+                "f4 f5", "c8 b7", // take pawn by king and move bishop for castling
+                "f5 f4", "e7 e5", // get back with king and attack with pawn
+                "f4 e3", "d8 h4", // run away with king and get out queen for castling
+                "g2 g3", "h4 g5", // attack queen and check the white king with queen
+                "a2 a3", "a2 a3", // invalid move - makes CHECK, black invalid too for handicapp <<
+                "f2 f4", "c6 e7", // valid move - hide behind the pawn and prepare knight to check king
+                "f4 g5", "e7 d5", // kill black queen with pawn and attack white king with knight
+                "d1 h5", // invalid move - try to check black king, but check from knight
+        };
+    }
+
     static public String[] getOpeningMoves() {
        return new String[]{
                 "e2 e4", "e7 e5",
@@ -83,19 +101,6 @@ public class Test {
                 "g1 h1", "d5 c6",
                 "d4 c5", "c8 d7",
                 "g5 h6", "f6 h6",
-                "f3 g5", "d7 e6",
-                "h1 h3", "g8 h8",
-                "h3 h6", "f7 h6",
-                "c4 f7", "e6 f7",
-                "g5 f7", "e7 f7",
-                "f1 f7", "c6 e5",
-                "d1 d8", "h8 d8",
-                "d4 e5", "d8 d1",
-                "d1 d2", "d7 d2",
-                "e5 d6", "d2 c2",
-                "g2 g4", "c2 c1",
-                "e2 e3", "c1 g5",
-                "d6 f8", "e1 f1"
         };
    }
 

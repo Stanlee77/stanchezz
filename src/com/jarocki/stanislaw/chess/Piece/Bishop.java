@@ -10,10 +10,11 @@ public class Bishop extends Basic {
         setSymbol(getSymbol().BISHOP);
     }
 
+    @Override
     public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
-        // Ensure the destination position is within the bounds of the board
+
         if (toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
             return false;
         }
@@ -21,12 +22,12 @@ public class Bishop extends Basic {
         int dRow = toRow - row;
         int dCol = toCol - col;
 
-        // Ensure the bishop is moving along a diagonal
+        // check if moving on diagonal
         if (Math.abs(dRow) != Math.abs(dCol)) {
             return false;
         }
 
-        // Check for obstruction along the path
+        // check if something between bishop and destination tile
         int stepRow = dRow > 0 ? 1 : -1;
         int stepCol = dCol > 0 ? 1 : -1;
 
@@ -42,7 +43,7 @@ public class Bishop extends Basic {
             currentCol += stepCol;
         }
 
-        // Ensure the destination position is either empty or occupied by an opponent's piece
+        // check destination clear/with opponent
         Basic destinationPiece = board.getPiece(toRow, toCol);
         return destinationPiece == null || destinationPiece.getColor() != this.getColor();
     }

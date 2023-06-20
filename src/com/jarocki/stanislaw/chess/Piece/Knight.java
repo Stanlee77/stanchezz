@@ -9,11 +9,11 @@ public class Knight extends Basic {
         super(color, row, col);
         setSymbol(Symbol.KNIGHT);
     }
-
+    @Override
     public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
-        // Ensure the destination position is within the bounds of the board
+        // make sure the destination coordinates are on the board
         if (toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
             return false;
         }
@@ -21,7 +21,7 @@ public class Knight extends Basic {
         int dRow = Math.abs(toRow - row);
         int dCol = Math.abs(toCol - col);
 
-        // Ensure the knight is moving in an L-shape
+        // knight can move only in "L" path = to cols up one row vert and vice versa
         return (dRow == 2 && dCol == 1) || (dRow == 1 && dCol == 2);
     }
 

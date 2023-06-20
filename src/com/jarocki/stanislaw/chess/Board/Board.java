@@ -4,8 +4,6 @@ import com.jarocki.stanislaw.chess.Coordinate.Column;
 import com.jarocki.stanislaw.chess.Coordinate.Row;
 import com.jarocki.stanislaw.chess.Piece.*;
 
-import javax.xml.stream.events.StartDocument;
-
 public class Board {
     private final Basic[][] fields;
     private boolean hasWhiteKingMoved;
@@ -21,8 +19,8 @@ public class Board {
 
     public void setUpPieces() {
         for (int col = 0; col < 8; col++) {
-            fields[Row.TWO.getNum()][col] = new Pawn(new Basic(Color.WHITE, Row.TWO, Column.values()[col]));
-            fields[Row.SEVEN.getNum()][col] = new Pawn(new Basic(Color.BLACK, Row.SEVEN, Column.values()[col]));
+            fields[Row.TWO.getNum()][col] = new Pawn(Color.WHITE, Row.TWO, Column.values()[col]);
+            fields[Row.SEVEN.getNum()][col] = new Pawn(Color.BLACK, Row.SEVEN, Column.values()[col]);
         }
 
         fields[Row.ONE.getNum()][Column.A.getNum()] = new Rook(Color.WHITE, Row.ONE, Column.A);
@@ -164,14 +162,54 @@ public class Board {
             System.out.println("Move invalid for a particular piece. (Board)");
             return false;
         }
-        // Ensure the move does not result in the current player's king being in check
-//        Board tempBoard = getCopy();
-//        tempBoard.makeMove(fromRow, fromCol, toRow, toCol);
-//        if (tempBoard.isKingInCheck(currentPlayerColor)) {
-//            return false;
-//        }
+//        make sure the move doesnt lead to check
+        Board tempBoard = copy();
+
+        tempBoard.makeMove(fromRow, fromCol, toRow, toCol);
+        if (tempBoard.isKingInCheck(currPlayerColor)) {
+            System.out.println("The king is in check!");
+            return false;
+        }
 
         return true;
+    }
+
+    public Board copy() {
+        Board copy = new Board();
+        // clean the board
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                copy.removePiece(row, col);
+            }
+        }
+        // copyt board state
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Basic piece = fields[row][col];
+                if (piece != null) {
+                    Color color = piece.getColor();
+                    Row pieceRow = piece.getRow();
+                    Column pieceCol = piece.getColumn();
+                    copy.setPiece(row, col, piece.copy(color, pieceRow, pieceCol));
+                }
+            }
+        }
+
+        // copy other props
+        copy.hasWhiteKingMoved = this.hasWhiteKingMoved;
+        copy.hasBlackKingMoved = this.hasBlackKingMoved;
+        if (this.lastMovedPawn != null) {
+            int row = this.lastMovedPawn.getRow().getNum();
+            int col = this.lastMovedPawn.getRow().getNum();
+            Basic lastMovedPawnCopy = copy.getPiece(row, col);
+            if(lastMovedPawnCopy != null){
+                copy.lastMovedPawn = new Pawn(lastMovedPawnCopy.getColor(), lastMovedPawnCopy.getRow(), lastMovedPawnCopy.getColumn());
+            } else {
+                copy.lastMovedPawn = null;
+            }
+        }
+
+        return copy;
     }
 
     public void removePiece(int row, int col) {
@@ -193,4 +231,57 @@ public class Board {
     public void setPiece(int row, int col, Basic piece) {
         fields[row][col] = piece;
     }
+
+    public boolean isKingInCheck(Color kingColor) {
+        int kingRow = -1;
+        int kingCol = -1;
+
+        // find king coordinates
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Basic piece = fields[row][col];
+                if (piece != null && piece.getSymbol().equals(Symbol.KING) && piece.getColor() == kingColor) {
+                    kingRow = row;
+                    kingCol = col;
+                    System.out.println("[DEBUG] " + kingColor + " king is in " + Column.getColByNum(String.valueOf(kingCol + 1)) + String.valueOf(kingRow + 1));
+                    break;
+                }
+            }
+        }
+
+        // check for each opponent piece if can take the king out
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Basic piece = fields[row][col];
+                if (piece != null && piece.getColor() != kingColor) {
+                    Basic particularPiece = piece;
+                    if(piece.getSymbol().equals(Symbol.QUEEN)){
+                        particularPiece = (Queen) new Queen(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+                    if(piece.getSymbol().equals(Symbol.KING)){
+                        particularPiece = (King) new King(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+                    if(piece.getSymbol().equals(Symbol.KNIGHT)){
+                        particularPiece = (Knight) new Knight(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+                    if(piece.getSymbol().equals(Symbol.BISHOP)){
+                        particularPiece = (Bishop) new Bishop(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+                    if(piece.getSymbol().equals(Symbol.ROOK)){
+                        particularPiece = (Rook) new Rook(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+                    if(piece.getSymbol().equals(Symbol.PAWN)){
+                        particularPiece = (Pawn) new Pawn(particularPiece.getColor(), particularPiece.getRow(), particularPiece.getColumn());
+                    }
+
+                    if (particularPiece.isMoveValid(kingRow, kingCol, this)) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

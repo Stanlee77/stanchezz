@@ -17,11 +17,11 @@ public class King extends Basic {
         return hasMoved;
     }
 
-    public boolean isValidMove(int toRow, int toCol, Board board) {
+    public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
 
-        // Ensure the destination position is within the bounds of the board
+        // check if inside the board
         if (toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
             return false;
         }
@@ -29,12 +29,12 @@ public class King extends Basic {
         int dRow = Math.abs(toRow - row);
         int dCol = Math.abs(toCol - col);
 
-        // Ensure the king is moving to an adjacent position
+        // king can move only by one tile
         if ((dRow != 1 || dCol != 0) && (dRow != 0 || dCol != 1) && (dRow != 1 || dCol != 1)) {
             return false;
         }
 
-        // Ensure the destination position is either empty or occupied by an opponent's piece
+        // check if destination is empty or with opponent
         Basic destinationPiece = board.getPiece(toRow, toCol);
         return destinationPiece == null || destinationPiece.getColor() != this.getColor();
     }

@@ -28,7 +28,15 @@ public class Game {
 
         int iteration = 0; // tests only
 
-        String[] testMoves = Test.takeQueenOut();
+//        String[] testMoves = Test.getOnlyPawnsOpening();
+//        String[] testMoves = Test.getWrongPawnMoves();
+//        String[] testMoves = Test.takeQueenOut();
+//        String[] testMoves = Test.takeBishopOut();
+//        String[] testMoves = Test.takeKnightsOut();
+//        String[] testMoves = Test.takeRookOut();
+//        String[] testMoves = Test.takeKingOut();
+        String[] testMoves = Test.getOpeningMoves();
+
 
         while(getIsGameOn()) {
             board.printBoard();

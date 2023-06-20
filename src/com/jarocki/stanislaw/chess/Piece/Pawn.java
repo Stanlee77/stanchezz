@@ -1,32 +1,32 @@
 package com.jarocki.stanislaw.chess.Piece;
 
 import com.jarocki.stanislaw.chess.Board.Board;
+import com.jarocki.stanislaw.chess.Coordinate.Column;
 import com.jarocki.stanislaw.chess.Coordinate.Row;
 
 public class Pawn extends Basic {
 
-    public Pawn(Basic basic) {
-        super(basic.getColor(), basic.getRow(), basic.getColumn());
+    public Pawn(Color color, Row row, Column col) {
+        super(color, row, col);
         this.setSymbol(Symbol.PAWN);
     }
 
     @Override
     public boolean isMoveValid(int targetRow, int targetColumn, Board board) {
-        // Check if the target position is within the board boundaries
+        // check if inside board
         if (targetRow < 0 || targetRow >= 8 || targetColumn < 0 || targetColumn >= 8) {
             return false;
         }
 
-        // Check if the target position is unoccupied
+        // destination tile empty/with opponent's pawn
         if (board.getPiece(targetRow, targetColumn) == null) {
-            // Regular move (no capture)
             if (getColumn().getNum() == targetColumn) {
-                // Check if the pawn is moving forward by one row
+                // moving forward by one row depending on the color
                 if (getColor() == Color.WHITE) {
                     if (targetRow - getRow().getNum() == 1) {
                         return true;
                     } else if (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == 2) {
-                        // Check if there is no piece in the way for a double move
+                        // check if can move two tiles
                         if (board.getPiece(getRow().getNum() + 1, targetColumn) == null) {
                             return true;
                         }
@@ -35,48 +35,46 @@ public class Pawn extends Basic {
                     if (targetRow - getRow().getNum() == -1) {
                         return true;
                     } else if (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == -2) {
-                        // Check if there is no piece in the way for a double move
+                        // check if can move two tiles
                         if (board.getPiece(getRow().getNum() - 1, targetColumn) == null) {
                             return true;
                         }
                     }
                 }
             }
-            // Pawn cannot move diagonally without capturing unless it's an en passant
+            // if en passant
             return isValidCapture(targetRow, targetColumn, board);
-//            System.out.println("Invalid move (Pawn.isMoveValid)");
-//            return false;
         } else {
-            // Check if the target position contains an opponent's piece
+            // i know it's silly but works
             return isValidCapture(targetRow, targetColumn, board);
         }
     }
 
     private boolean isValidCapture(int targetRow, int targetColumn, Board board) {
-        // Check if the target position is within the board boundaries and contains an opponent's piece
+        // inside board
         if (targetRow < 0 || targetRow >= 8 || targetColumn < 0 || targetColumn >= 8) {
             return false;
         }
 
         Basic targetPiece = board.getPiece(targetRow, targetColumn);
         if (targetPiece == null) {
-            // Check for en passant capture
+            // en passant check
             if (targetColumn == getColumn().getNum() - 1 || targetColumn == getColumn().getNum() + 1) {
-                // Check if the target position is the en passant target square
+                // check target tile
                 if (targetRow == getRow().getNum() + (getColor() == Color.WHITE ? 1 : -1)) {
                     Pawn lastMovedPawn = board.getLastMovedPawn();
                     if (lastMovedPawn != null && lastMovedPawn.getRow() == getRow() &&
                             lastMovedPawn.getColumn().getNum() == targetColumn) {
-                        // En passant capture is valid
+                        // correct en passant
                         return true;
                     }
                 }
             }
-            return false; // Target position is not occupied by an opponent's piece or valid en passant capture
+            return false;
         }
         int col = getColumn().getNum();
         if (targetColumn == getColumn().getNum() - 1) {
-            // Move is diagonal to the top left
+            // diagonal to top left
             Color color = getColor();
             if (getColor() == Color.WHITE && targetRow == getRow().getNum() + 1) {
                 return true;
@@ -84,7 +82,7 @@ public class Pawn extends Basic {
                 return true;
             }
         } else if (targetColumn == getColumn().getNum() + 1) {
-            // Move is diagonal to the top right
+            // one tile to top right
             if (getColor() == Color.WHITE && targetRow == getRow().getNum() + 1) {
                 return true;
             } else if (getColor() == Color.BLACK && targetRow == getRow().getNum() - 1) {
@@ -92,11 +90,11 @@ public class Pawn extends Basic {
             }
         }
 
-        return false; // Move is not diagonal by one field to the top right or top left
+        return false;
     }
 
     private boolean isStartingPosition(Row currentRow, Color color) {
-        // Check if the pawn is in its starting position (second row for white, seventh row for black)
+        // check if the pawn is in its starting position (white row - 2, black row - 7)
         return (color == Color.WHITE && currentRow == Row.TWO)
                 || (color == Color.BLACK && currentRow == Row.SEVEN);
     }

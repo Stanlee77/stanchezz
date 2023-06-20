@@ -44,4 +44,11 @@ public class Basic {
     }
 
     public boolean isMoveValid(int targetRow, int targetColumn, Board board) { return false; }
+
+    public Basic copy(Color color, Row row, Column column) {
+        Basic copy = new Basic(color, row, column);
+        copy.setSymbol(this.symbol);
+        return copy;
+    }
+
 }

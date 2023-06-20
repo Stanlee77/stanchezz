@@ -9,11 +9,11 @@ public class Queen extends Basic {
         super(color, row, col);
         setSymbol(Symbol.QUEEN);
     }
-
+    @Override
     public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
-        // Ensure the destination position is within the bounds of the board
+        //check if inside the board
         if (toRow < 0 || toRow >= 8 || toCol < 0 || toCol >= 8) {
             return false;
         }
@@ -21,12 +21,12 @@ public class Queen extends Basic {
         int dRow = toRow - row;
         int dCol = toCol - col;
 
-        // Ensure the queen is moving along a straight line or a diagonal
+        // queen moving vertical/horizontally/diagonally
         if (dRow != 0 && dCol != 0 && Math.abs(dRow) != Math.abs(dCol)) {
             return false;
         }
 
-        // Check for obstruction along the path
+        // check if there's sth between her and the destination
         int stepRow = dRow == 0 ? 0 : (dRow > 0 ? 1 : -1);
         int stepCol = dCol == 0 ? 0 : (dCol > 0 ? 1 : -1);
 
@@ -42,7 +42,7 @@ public class Queen extends Basic {
             currentCol += stepCol;
         }
 
-        // Ensure the destination position is either empty or occupied by an opponent's piece
+        // destination tile has to be empty or with opponent
         Basic destinationPiece = board.getPiece(toRow, toCol);
         return destinationPiece == null || destinationPiece.getColor() != this.getColor();
     }
