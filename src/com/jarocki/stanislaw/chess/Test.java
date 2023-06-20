@@ -48,6 +48,17 @@ public class Test {
         };
     }
 
+    static public String[] takeKnightsOut() {
+        return new String[]{
+                "b1 a3", "g8 f6",
+                "g1 g3", "f6 h7", // wrong moves - occupied own piece/illegal field
+                "a3 c4", "f6 d5",
+                "a3 c4", "f6 d5",
+                "c4 e3", "d5 e3",
+        };
+    }
+
+
     static public String[] getOpeningMoves() {
        return new String[]{
                 "e2 e4", "e7 e5",
