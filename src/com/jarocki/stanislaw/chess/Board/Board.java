@@ -3,6 +3,9 @@ package com.jarocki.stanislaw.chess.Board;
 import com.jarocki.stanislaw.chess.Coordinate.Column;
 import com.jarocki.stanislaw.chess.Coordinate.Row;
 import com.jarocki.stanislaw.chess.Piece.*;
+import com.jarocki.stanislaw.chess.Piece.Color;
+
+import java.awt.*;
 
 public class Board {
     private final Basic[][] fields;
@@ -101,15 +104,58 @@ public class Board {
         piece.setRow(targetRow);
         piece.setColumn(targetCol);
 
+        // handle pawn promotion to queen
+        if((toRow == 0 || toRow == 7) && piece.getSymbol().equals(Symbol.PAWN)){
+            piece.setSymbol(Symbol.QUEEN);
+            Queen queen = new Queen(piece.getColor(), piece.getRow(), piece.getColumn());
+            queen.setRow(targetRow);
+            queen.setColumn(targetCol);
+            fields[toRow][toCol] = queen;
+            return;
+        }
+
         // remove en passant captured pawn from board
-        if (piece instanceof Pawn) {
-            Pawn pawn = (Pawn) piece;
+        if (piece.getSymbol().equals(Symbol.PAWN)) {
+            Pawn pawn = new Pawn(piece.getColor(), piece.getRow(), piece.getColumn());
             if (Math.abs(fromRow - toRow) == 1 && Math.abs(fromCol - toCol) == 1 && fields[toRow][toCol] == null) {
                 int capturedPawnRow = fromRow;
                 int capturedPawnCol = toCol;
                 removePiece(capturedPawnRow, capturedPawnCol);
             }
         }
+
+        // castling check
+        if (piece.getSymbol().equals(Symbol.KING)) {
+            King king = new King(piece.getColor(), piece.getRow(), piece.getColumn());
+            if (Math.abs(fromCol - toCol) == 2) {
+                // short castling
+                if (toCol > fromCol) {
+                    // move closer rook
+                    fields[toRow][toCol - 1] = fields[toRow][Column.H.getNum()];
+                    fields[toRow][Column.H.getNum()] = null;
+                }
+                // long castling
+                else {
+                    // move far rook
+                    fields[toRow][toCol + 1] = fields[toRow][Column.A.getNum()];
+                    fields[toRow][Column.A.getNum()] = null;
+                }
+            }
+
+            // update status of the king
+            if (piece.getColor() == Color.WHITE) {
+                this.hasWhiteKingMoved = true;
+            } else {
+                this.hasBlackKingMoved = true;
+            }
+        } else if (piece.getSymbol().equals(Symbol.PAWN)) {
+            if (Math.abs(fromRow - toRow) == 2) {
+                lastMovedPawn = new Pawn(piece.getColor(), piece.getRow(), piece.getColumn());
+            } else {
+                lastMovedPawn = null;
+            }
+        }
+
 
         fields[toRow][toCol] = piece;
 
@@ -243,7 +289,7 @@ public class Board {
                 if (piece != null && piece.getSymbol().equals(Symbol.KING) && piece.getColor() == kingColor) {
                     kingRow = row;
                     kingCol = col;
-                    System.out.println("[DEBUG] " + kingColor + " king is in " + Column.getColByNum(String.valueOf(kingCol + 1)) + String.valueOf(kingRow + 1));
+//                    System.out.println("[DEBUG] " + kingColor + " king is in " + Column.getColByNum(String.valueOf(kingCol + 1)) + String.valueOf(kingRow + 1));
                     break;
                 }
             }

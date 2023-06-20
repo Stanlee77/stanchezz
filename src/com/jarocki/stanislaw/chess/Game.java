@@ -35,7 +35,9 @@ public class Game {
 //        String[] testMoves = Test.takeKnightsOut();
 //        String[] testMoves = Test.takeRookOut();
 //        String[] testMoves = Test.takeKingOut();
-        String[] testMoves = Test.getOpeningMoves();
+//        String[] testMoves = Test.getCastlingMoves();
+        String[] testMoves = Test.getPawnPromotion();
+//        String[] testMoves = Test.getOpeningMoves();
 
 
         while(getIsGameOn()) {

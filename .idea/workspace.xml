@@ -8,13 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Basic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Basic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Test.java" afterDir="false" />
     </list>
@@ -61,14 +55,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/stanlee77/code/chessEngine/src/com/jarocki/stanislaw/chess/Piece",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/stanlee77/code/chessEngine/src/com/jarocki/stanislaw/chess/Piece&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece" />

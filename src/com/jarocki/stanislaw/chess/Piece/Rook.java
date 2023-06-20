@@ -5,6 +5,7 @@ import com.jarocki.stanislaw.chess.Coordinate.Column;
 import com.jarocki.stanislaw.chess.Coordinate.Row;
 
 public class Rook extends Basic {
+    private boolean hasMoved = false;
     public Rook(Color color, Row row, Column col) {
         super(color, row, col);
         setSymbol(Symbol.ROOK);
@@ -47,6 +48,10 @@ public class Rook extends Basic {
         // check destination empty/with opponent
         Basic destinationPiece = board.getPiece(toRow, toCol);
         return destinationPiece == null || destinationPiece.getColor() != this.getColor();
+    }
+
+    public void setHasMoved() {
+        hasMoved = true;
     }
 
     public Basic copy() {

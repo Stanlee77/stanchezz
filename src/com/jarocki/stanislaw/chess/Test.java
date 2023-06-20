@@ -88,7 +88,7 @@ public class Test {
     }
 
     static public String[] getOpeningMoves() {
-       return new String[]{
+        return new String[]{
                 "e2 e4", "e7 e5",
                 "g1 f3", "b8 c6",
                 "f1 c4", "g8 f6",
@@ -97,10 +97,34 @@ public class Test {
                 "e4 d5", "e7 e6",
                 "c1 g5", "d8 f6",
                 "d1 f3", "e8 g8",
-                "e1 g1", "f8 e7",
+                "e1 g1", "f8 e7", // castling
                 "g1 h1", "d5 c6",
                 "d4 c5", "c8 d7",
                 "g5 h6", "f6 h6",
+        };
+    }
+
+    static public String[] getCastlingMoves() {
+        return new String[]{
+                "e2 e4", "d7 d6",
+                "f1 c4", "c8 f5",
+                "g1 f3", "b8 c6",
+                "g1 f3", "b8 c6",
+                "e1 g1", "d8 d7", // castling 1
+                "a2 a3", "e8 c8", // castling 2
+        };
+   }
+
+    static public String[] getPawnPromotion() {
+        return new String[]{
+                "e2 e4", "d7 d5",
+                "e4 e5", "d5 d4",
+                "e5 e6", "d4 d3",
+                "e6 f7", "e8 d7",
+                "h2 h3", "d3 c2",
+                "f7 g8", "c2 b1", // promote to queens both
+                "g8 b3", "b1 f5", // move queens to demonstrate
+                "b3 b7", // take pawn downs
         };
    }
 
