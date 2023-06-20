@@ -28,7 +28,7 @@ public class Game {
 
         int iteration = 0; // tests only
 
-        String[] testMoves = Test.takeKnightsOut();
+        String[] testMoves = Test.takeQueenOut();
 
         while(getIsGameOn()) {
             board.printBoard();

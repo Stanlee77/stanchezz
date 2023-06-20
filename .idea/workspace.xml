@@ -7,7 +7,7 @@
     <list default="true" id="594d24b9-cb67-479c-bd03-0c89ab1bafab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

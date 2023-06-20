@@ -58,6 +58,16 @@ public class Test {
         };
     }
 
+    static public String[] takeQueenOut() {
+        return new String[]{
+                "e2 e4", "e7 e6", // move pawns out
+                "d1 f3", "d8 h4",   // move queens out
+                "f3 b4", "h4 h1", // wrong move - random field/jump over piece <<<
+                "f3 b3", "h4 f6", //  move queens other horizontally and diagonally
+                "b3 b7", "f6 b2", // capture pawns with queens
+
+        };
+    }
 
     static public String[] getOpeningMoves() {
        return new String[]{
