@@ -10,7 +10,7 @@ public class Rook extends Basic {
         setSymbol(Symbol.ROOK);
     }
 
-    public boolean isValidMove(int toRow, int toCol, Board board) {
+    public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
 

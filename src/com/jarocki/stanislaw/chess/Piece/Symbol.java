@@ -8,12 +8,11 @@ public enum Symbol {
     KNIGHT("N"),
     PAWN("P");
 
-//    PAWN("
+//    PAWN("♟");
 //    QUEEN("♛"),
 //    ROOK("♜"),
 //    BISHOP("♝"),
 //    KNIGHT("♞"),
-//    PAWN("♟");
 
     private final String symbol;
 

@@ -10,7 +10,7 @@ public class Bishop extends Basic {
         setSymbol(getSymbol().BISHOP);
     }
 
-    public boolean isValidMove(int toRow, int toCol, Board board) {
+    public boolean isMoveValid(int toRow, int toCol, Board board) {
         int row = this.getRow().getNum();
         int col = this.getColumn().getNum();
         // Ensure the destination position is within the bounds of the board

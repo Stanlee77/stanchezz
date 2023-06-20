@@ -5,30 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="594d24b9-cb67-479c-bd03-0c89ab1bafab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Column.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Coordinate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Basic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/King.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Knight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Queen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Symbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Column.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinates/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Coordinate/Row.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Basic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Color.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Pawn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Rook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Pieces/Slider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Player/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Symbol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +69,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.jarocki.stanislaw.chess" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Run Main" type="Application" factoryName="Application">
@@ -115,27 +102,12 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Piece/Pawn.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="92" />
+          <url>file://$PROJECT_DIR$/src/com/jarocki/stanislaw/chess/Board/Board.java</url>
+          <line>177</line>
+          <option name="timeStamp" value="134" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <pin-to-top-manager>
-      <pinned-members>
-        <PinnedItemInfo parentTag="com.jarocki.stanislaw.chess.Board.Board" memberName="fields" />
-      </pinned-members>
-    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/chessEngine$Run_Main.ic" NAME="Run Main Coverage Results" MODIFIED="1687198501398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

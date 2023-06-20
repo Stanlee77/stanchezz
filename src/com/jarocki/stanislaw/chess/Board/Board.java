@@ -10,6 +10,7 @@ public class Board {
     private final Basic[][] fields;
     private boolean hasWhiteKingMoved;
     private boolean hasBlackKingMoved;
+    private Pawn lastMovedPawn;
 
     public Board() {
         fields = new Basic[8][8];
@@ -96,19 +97,36 @@ public class Board {
     public void makeMove(int fromRow, int fromCol, int toRow, int toCol) {
         Basic piece = fields[fromRow][fromCol];
         fields[fromRow][fromCol] = null;
-        fields[toRow][toCol] = piece;
 
-        Row targetRow = Row.getRowByNum(String.valueOf(toRow));
-        Column targetCol = Column.getColByNum(String.valueOf(toCol));
+        Row targetRow = Row.getRowByNum(String.valueOf(toRow+1));
+        Column targetCol = Column.getColByNum(String.valueOf(toCol+1));
         piece.setRow(targetRow);
         piece.setColumn(targetCol);
 
-        // Handle special moves
+        // remove en passant captured pawn from board
+        if (piece instanceof Pawn) {
+            Pawn pawn = (Pawn) piece;
+            if (Math.abs(fromRow - toRow) == 1 && Math.abs(fromCol - toCol) == 1 && fields[toRow][toCol] == null) {
+                int capturedPawnRow = fromRow;
+                int capturedPawnCol = toCol;
+                removePiece(capturedPawnRow, capturedPawnCol);
+            }
+        }
+
+        fields[toRow][toCol] = piece;
+
+        // en passant, castling
         if (piece instanceof King) {
             if (piece.getColor() == Color.WHITE) {
                 this.hasWhiteKingMoved = true;
             } else {
                 this.hasBlackKingMoved = true;
+            }
+        } else if (piece instanceof Pawn) {
+            if (Math.abs(fromRow - toRow) == 2) {
+                lastMovedPawn = (Pawn) piece;
+            } else {
+                lastMovedPawn = null;
             }
         }
     }
@@ -146,7 +164,6 @@ public class Board {
             System.out.println("Move invalid for a particular piece. (Board)");
             return false;
         }
-
         // Ensure the move does not result in the current player's king being in check
 //        Board tempBoard = getCopy();
 //        tempBoard.makeMove(fromRow, fromCol, toRow, toCol);
@@ -157,12 +174,20 @@ public class Board {
         return true;
     }
 
+    public void removePiece(int row, int col) {
+        fields[row][col] = null;
+    }
+
     public Basic getPiece(int row, int column) {
         if (row >= 0 && row < 8 && column >= 0 && column < 8) {
             return fields[row][column];
         } else {
             return null;
         }
+    }
+
+    public Pawn getLastMovedPawn() {
+        return lastMovedPawn;
     }
 
     public void setPiece(int row, int col, Basic piece) {

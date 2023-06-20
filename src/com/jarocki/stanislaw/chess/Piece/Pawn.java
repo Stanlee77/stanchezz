@@ -20,18 +20,32 @@ public class Pawn extends Basic {
         // Check if the target position is unoccupied
         if (board.getPiece(targetRow, targetColumn) == null) {
             // Regular move (no capture)
-            int col = getColumn().getNum();
             if (getColumn().getNum() == targetColumn) {
                 // Check if the pawn is moving forward by one row
                 if (getColor() == Color.WHITE) {
-                    return targetRow - getRow().getNum() == 1 || (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == 2);
+                    if (targetRow - getRow().getNum() == 1) {
+                        return true;
+                    } else if (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == 2) {
+                        // Check if there is no piece in the way for a double move
+                        if (board.getPiece(getRow().getNum() + 1, targetColumn) == null) {
+                            return true;
+                        }
+                    }
                 } else {
-                    return targetRow - getRow().getNum() == -1 || (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == -2);
+                    if (targetRow - getRow().getNum() == -1) {
+                        return true;
+                    } else if (isStartingPosition(getRow(), getColor()) && targetRow - getRow().getNum() == -2) {
+                        // Check if there is no piece in the way for a double move
+                        if (board.getPiece(getRow().getNum() - 1, targetColumn) == null) {
+                            return true;
+                        }
+                    }
                 }
             }
-            // Pawn cannot move diagonally without capturing
-            System.out.println("Invalid move (Pawn.isMoveValid)");
-            return false;
+            // Pawn cannot move diagonally without capturing unless it's an en passant
+            return isValidCapture(targetRow, targetColumn, board);
+//            System.out.println("Invalid move (Pawn.isMoveValid)");
+//            return false;
         } else {
             // Check if the target position contains an opponent's piece
             return isValidCapture(targetRow, targetColumn, board);
@@ -46,16 +60,27 @@ public class Pawn extends Basic {
 
         Basic targetPiece = board.getPiece(targetRow, targetColumn);
         if (targetPiece == null) {
-            return false; // Target position is not occupied by an opponent's piece
+            // Check for en passant capture
+            if (targetColumn == getColumn().getNum() - 1 || targetColumn == getColumn().getNum() + 1) {
+                // Check if the target position is the en passant target square
+                if (targetRow == getRow().getNum() + (getColor() == Color.WHITE ? 1 : -1)) {
+                    Pawn lastMovedPawn = board.getLastMovedPawn();
+                    if (lastMovedPawn != null && lastMovedPawn.getRow() == getRow() &&
+                            lastMovedPawn.getColumn().getNum() == targetColumn) {
+                        // En passant capture is valid
+                        return true;
+                    }
+                }
+            }
+            return false; // Target position is not occupied by an opponent's piece or valid en passant capture
         }
-
-        if (targetColumn == getColumn().getNum()) {
+        int col = getColumn().getNum();
+        if (targetColumn == getColumn().getNum() - 1) {
             // Move is diagonal to the top left
-            int row = getRow().getNum() + 2;
             Color color = getColor();
-            if (getColor() == Color.WHITE && targetRow == getRow().getNum() + 2) {
+            if (getColor() == Color.WHITE && targetRow == getRow().getNum() + 1) {
                 return true;
-            } else if (getColor() == Color.BLACK && targetRow == getRow().getNum() - 2) {
+            } else if (getColor() == Color.BLACK && targetRow == getRow().getNum() - 1) {
                 return true;
             }
         } else if (targetColumn == getColumn().getNum() + 1) {

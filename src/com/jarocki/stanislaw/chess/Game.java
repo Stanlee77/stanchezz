@@ -1,13 +1,10 @@
 package com.jarocki.stanislaw.chess;
 
 import com.jarocki.stanislaw.chess.Board.Board;
-import com.jarocki.stanislaw.chess.Coordinate.Row;
 import com.jarocki.stanislaw.chess.Piece.Color;
 import com.jarocki.stanislaw.chess.Player.Player;
 import com.jarocki.stanislaw.chess.Player.Role;
-import java.io.ByteArrayInputStream;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -31,61 +28,22 @@ public class Game {
 
         int iteration = 0; // tests only
 
-
-        String[] testMoves = {
-                "e2 e4", "d7 d5",
-                "c2 c4", "e7 e5",
-                "e4 d5",
-//                "e4 d5", "e5 e4",
-        };
-
-//        String[] testMoves = {
-//                "e2 e4", "e7 e5",
-//                "g1 f3", "b8 c6",
-//                "f1 c4", "g8 f6",
-//                "d2 d4", "e5 d4",
-//                "f3 d4", "f6 d5",
-//                "e4 d5", "e7 e6",
-//                "c1 g5", "d8 f6",
-//                "d1 f3", "e8 g8",
-//                "e1 g1", "f8 e7",
-//                "g1 h1", "d5 c6",
-//                "d4 c5", "c8 d7",
-//                "g5 h6", "f6 h6",
-//                "f3 g5", "d7 e6",
-//                "h1 h3", "g8 h8",
-//                "h3 h6", "f7 h6",
-//                "c4 f7", "e6 f7",
-//                "g5 f7", "e7 f7",
-//                "f1 f7", "c6 e5",
-//                "d1 d8", "h8 d8",
-//                "d4 e5", "d8 d1",
-//                "d1 d2", "d7 d2",
-//                "e5 d6", "d2 c2",
-//                "g2 g4", "c2 c1",
-//                "e2 e3", "c1 g5",
-//                "d6 f8", "e1 f1"
-//        };
-
+        String[] testMoves = Test.takeRookOut();
 
         while(getIsGameOn()) {
             board.printBoard();
 
             Color playerColor = this.getIsWhiteTurn() ? Color.WHITE : Color.BLACK;
 
-//            System.out.println("Enter " + playerColor.toString() + " next move: ");
+            System.out.println("Enter " + playerColor.toString() + " next move: ");
 
-            // 0.5s delay for playing comp vs comp
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            Test.delay(300);
 
-//            String input = scanner.nextLine();
-            // for tests comment upper line and uncomment the 3 below
+            // tests
             String input;
-            if(iteration >= testMoves.length) { input = scanner.nextLine(); } else {
+            if(iteration >= testMoves.length) {
+                input = scanner.nextLine();
+            } else { // tests only
                 input = testMoves[iteration];
                 iteration = iteration + 1;
             }
@@ -105,7 +63,7 @@ public class Game {
             int toRow = currPlayer.getLastMoveToRow().getNum();
             int toCol = currPlayer.getLastMoveToCol().getNum();
 
-            System.out.println("Moving " + currPlayer.getRole().formatName() + " from " + moves[0] + " to " + moves[1] + " [debug]"); // temp for debug
+            Test.displayCurrentMove(currPlayer.getRole().formatName(), moves[0], moves[1]);
 
             if (!board.isMoveValid(fromRow, fromCol, toRow, toCol, playerColor)) {
                 System.out.println("Moving " + currPlayer.getRole().formatName() + " from " + moves[0] + " to " + moves[1] + " is illegal. (Game)");
