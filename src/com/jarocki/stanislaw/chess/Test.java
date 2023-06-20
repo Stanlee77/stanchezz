@@ -37,6 +37,17 @@ public class Test {
         };
     }
 
+    static public String[] takeBishopOut() {
+        return new String[]{
+                "e2 e4", "b7 b6",
+                "f1 c4", "c8 b7",
+                "c4 g8", "b7 a8", // wrong moves - over piece/onto own piece
+                "c4 d4", "b7 b4", // wrong moves - horizontal i vertical
+                "c4 f7", "b7 e4",
+                "f7 g8", "e4 c2", // in future there's a check
+        };
+    }
+
     static public String[] getOpeningMoves() {
        return new String[]{
                 "e2 e4", "e7 e5",
